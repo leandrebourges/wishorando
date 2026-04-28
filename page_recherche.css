@@ -6,3 +6,17 @@ h1 {
     text-align: center;
     color: rgb(1, 75, 7);
 }
+h2 {
+    margin-top: 50px;
+}
+.liste_randos {
+    width: 40%;
+    box-sizing: border-box;
+    margin-top: 20px;
+}
+.liste_randos .sortie {
+    background-color: rgba(21, 128, 28, 0.219);
+    border: 2px solid rgb(1, 75, 7);
+    border-radius: 6px;
+    padding: 20px;
+}

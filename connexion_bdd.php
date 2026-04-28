@@ -11,6 +11,14 @@
     mysqli_select_db($conn, "wishorando");                                 
     // Encodage UTF8 pour les échanges avecla BD
     mysqli_query($conn, "SET NAMES UTF8");  
-    echo "Base de données connectée !";
+    // echo "Base de données connectée !";
     }
+
+    $sql_rando = "SELECT nom FROM sortie";
+    $result_rando = mysqli_query($conn, $sql_rando);
+    $rando = mysqli_fetch_assoc($result_rando)["nom"];
+
+    $sql_distance = "SELECT distance FROM sortie";
+    $result_distance = mysqli_query($conn, $sql_distance);
+    $distance = mysqli_fetch_assoc($result_distance)["distance"];
 ?>

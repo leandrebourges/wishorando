@@ -16,22 +16,22 @@
 
         <header>
             <h1> Wishorando 🏔️ </h1>
+            <?php include_once 'barre_recherche.php';?>
         </header>
 
         <main>
 
             <div class = "liste_randos">
-                <?php
-                    $sql_rando = "SELECT nom FROM sortie";
-                    $result_rando = mysqli_query($conn, $sql_rando);
-                    $rando = mysqli_fetch_assoc($result_rando)["nom"];
-                    echo $rando;
-                ?>
+                <h2>Liste des randonnées : </h2>
+                <div class = "sortie">
+                    <?php echo "<div class = 'rando'>Nom : {$rando}</div>"; ?>
+                    <?php echo "<div class = 'dist'>Distance : {$distance}</div>"; ?>
+                </div>
             </div>
 
             <!-- 
             <div class = "affichage">
-
+                <h2>Carte : </h2>
                 <div class = "carte">
 
                 </div>
