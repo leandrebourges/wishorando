@@ -19,6 +19,7 @@
         </header>
 
         <main>
+
             <div class = "container">
                 <div class = "liste_randos">
                     <h2>Liste des randonnées : </h2>
@@ -28,6 +29,7 @@
                                 echo "<div class = 'rando'>Nom : {$rando['nom']}<br>Distance : {$rando['distance']}</div>";
                             }
                         ?>
+                        
                     </div>
                 </div>
 
@@ -36,11 +38,6 @@
                     <div class = "carte">
                         Carte
                     </div>
-
-                    <div class = "detail">
-
-                    </div>
-
                 </div> 
             </div>
             
