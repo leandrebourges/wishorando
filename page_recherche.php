@@ -29,7 +29,7 @@
                 ?>
             </div>
 
-<!-- 
+            <!-- 
             <div class = "affichage">
 
                 <div class = "carte">
