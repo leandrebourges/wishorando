@@ -14,21 +14,21 @@ h2 {
     box-sizing: border-box;
     padding: 20px;
 }
-.liste_randos .sortie {
+.rando {
     background-color: rgba(21, 128, 28, 0.219);
     border: 2px solid rgb(1, 75, 7);
     border-radius: 6px;
     padding: 20px;
+    margin: 10px;
 }
 .affichage {
     width: 55%;
     padding: 20px;
 }
 .affichage .carte {
-    margin-top: 10px;
-    height: 500px;
-    /* background: white; */
-    border: 3px solid rgb(255, 255, 255);
+    height: 500px;   
+    background-color: rgb(233, 250, 234);
+    border: 2px solid rgb(1, 75, 7);
     border-radius: 8px;
     padding: 20px;
 }

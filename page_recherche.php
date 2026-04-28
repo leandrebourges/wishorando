@@ -25,8 +25,7 @@
                     <div class = "sortie">
                         <?php
                             while ($rando = $result_rando->fetch_assoc()){
-                                echo "<div class = 'rando'>Nom : {$rando['nom']}</div>";
-                                echo "<div class = 'dist'>Distance : {$rando['distance']}</div>";
+                                echo "<div class = 'rando'>Nom : {$rando['nom']}<br>Distance : {$rando['distance']}</div>";
                             }
                         ?>
                     </div>
