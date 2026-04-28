@@ -14,11 +14,6 @@
     // echo "Base de données connectée !";
     }
 
-    $sql_rando = "SELECT nom FROM sortie";
-    $result_rando = mysqli_query($conn, $sql_rando);
-    $rando = mysqli_fetch_assoc($result_rando)["nom"];
-
-    $sql_distance = "SELECT distance FROM sortie";
-    $result_distance = mysqli_query($conn, $sql_distance);
-    $distance = mysqli_fetch_assoc($result_distance)["distance"];
+    $sql_rando = "SELECT nom, distance FROM sortie";
+    $result_rando = $conn->query($sql_rando);
 ?>

@@ -15,32 +15,36 @@
     <body>
 
         <header>
-            <h1> Wishorando 🏔️ </h1>
             <?php include_once 'barre_recherche.php';?>
         </header>
 
         <main>
-
-            <div class = "liste_randos">
-                <h2>Liste des randonnées : </h2>
-                <div class = "sortie">
-                    <?php echo "<div class = 'rando'>Nom : {$rando}</div>"; ?>
-                    <?php echo "<div class = 'dist'>Distance : {$distance}</div>"; ?>
+            <div class = "container">
+                <div class = "liste_randos">
+                    <h2>Liste des randonnées : </h2>
+                    <div class = "sortie">
+                        <?php
+                            while ($rando = $result_rando->fetch_assoc()){
+                                echo "<div class = 'rando'>Nom : {$rando['nom']}</div>";
+                                echo "<div class = 'dist'>Distance : {$rando['distance']}</div>";
+                            }
+                        ?>
+                    </div>
                 </div>
+
+                <div class = "affichage">
+                    <h2>Carte : </h2>
+                    <div class = "carte">
+                        Carte
+                    </div>
+
+                    <div class = "detail">
+
+                    </div>
+
+                </div> 
             </div>
-
-            <!-- 
-            <div class = "affichage">
-                <h2>Carte : </h2>
-                <div class = "carte">
-
-                </div>
-
-                <div class = "detail">
-
-                </div>
-
-            </div>  -->
+            
 
         </main>
 
