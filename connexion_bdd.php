@@ -14,6 +14,6 @@
     // echo "Base de données connectée !";
     }
 
-    $sql_rando = "SELECT nom, distance FROM sortie";
+    $sql_rando = "SELECT id, nom, distance FROM sortie";
     $result_rando = $conn->query($sql_rando);
 ?>
