@@ -5,6 +5,7 @@
     $id = $_GET['id'];
     $sql_rando = "SELECT * FROM sortie WHERE id = $id";
     $result_rando = $conn->query($sql_rando);
+    $rando = $result_rando->fetch_assoc();
 ?>
 
 <html>
@@ -21,33 +22,38 @@
             <?php include_once 'barre_recherche.php';?>
         </header>
 
-        <main class = "container">
+        <main>
 
-            <div class = "box1">
-                <h2>
-                    <?php
-                    $rando = $result_rando->fetch_assoc();
-                        echo "{$rando['nom']}";
-                    ?>
-                </h2>
-                <div class = "sortie">
-                    <?php
-                        // $rando = $result_rando->fetch_assoc();
-                        echo "<div class = 'rando'>
-                                    Distance : {$rando['distance']} km<br>
-                                </div>";
-                    ?>
+            <h2>
+                <?php
+                    echo "{$rando['nom']}";
+                ?>
+            </h2>
 
+            <div class = "container">
+
+                <div class = "informations">
+                    <div class = "sortie">
+                        <div><strong>Description : </strong><?php echo "{$rando['description']}"; ?></div>
+                        <br>
+                        <div><strong>Distance : </strong><?php echo "{$rando['distance']}"; ?> km</div>
+                        <br>
+                        <div><strong>Dénivelé : </strong><?php echo "{$rando['denivele']}"; ?> m</div>
+                        <br>
+                        <div><strong>Difficulté : </strong><?php echo "{$rando['difficulte']}"; ?></div>
+                        <br>
+                        <div><strong>Chien autorisé : </strong><?php echo "{$rando['chien_autorise']}"; ?></div>
+                        <br>
+                    </div>
+                </div>
+
+                <div class = "affichage">
+                    <div class = "carte">
+                        <div id = "map" style = "width: 100%; height: 100%;"></div>
+                    </div>
                 </div>
 
             </div>
-
-            <div class = "affichage">
-                <div class = "carte">
-                    <div id = "map" style = "width: 100%; height: 100%;"></div>
-                </div>
-            </div>
-
 
         </main>
         

@@ -12,8 +12,8 @@
         <title> Recherche de randonnées </title>
         <meta charset = "UTF-8">
         <link rel = "stylesheet" href = "page_recherche.css" />
-		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-		<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+		<link rel = "stylesheet" href = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity = "sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin = ""/>
+		<script src = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity = "sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin = ""></script>
 
     </head> 
 
@@ -57,7 +57,7 @@
         </footer>
 
 
-        <!-- NE PAS TOUCHER !! Affichage de la carte ! -->
+        <!-- NE PAS TOUCHER !! Affichage de la carte ! (sauf Léandre) -->
         <script>
 
             const map = L.map('map').setView([45.905, 6.13], 12);
