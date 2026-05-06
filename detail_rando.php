@@ -21,18 +21,30 @@
             <?php include_once 'barre_recherche.php';?>
         </header>
 
-        <main>
+        <main class = "container">
 
             <div class = "box1">
-                <h2>Affichage de la randonnée sélectionnée</h2>
+                <h2>
+                    <?php
+                    $rando = $result_rando->fetch_assoc();
+                        echo "{$rando['nom']}";
+                    ?>
+                </h2>
                 <div class = "sortie">
                     <?php
-                        $rando = $result_rando->fetch_assoc();
-                        echo "<div class = 'rando'>Nom : {$rando['nom']}<br>
-                                        Distance : {$rando['distance']}<br>
-                                      </div>";
+                        // $rando = $result_rando->fetch_assoc();
+                        echo "<div class = 'rando'>
+                                    Distance : {$rando['distance']} km<br>
+                                </div>";
                     ?>
 
+                </div>
+
+            </div>
+
+            <div class = "affichage">
+                <div class = "carte">
+                    <div id = "map" style = "width: 100%; height: 100%;"></div>
                 </div>
             </div>
 

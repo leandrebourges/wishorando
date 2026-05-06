@@ -2,5 +2,6 @@ html {
     background: rgba(21, 128, 28, 0.219);
 }
 h2 {
-    background-color: yellow;
+    text-align: center;
+    margin-top: 3%;
 }

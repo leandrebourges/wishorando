@@ -33,7 +33,7 @@
                         <?php
                             while ($rando = $result_rando->fetch_assoc()){
                                 echo "<div class = 'rando'>Nom : {$rando['nom']}<br>
-                                        Distance : {$rando['distance']}<br>
+                                        Distance : {$rando['distance']} km<br>
                                         <a class = 'detail' href = 'detail_rando.php?id={$rando['id']}'>Plus de détails</a>
                                       </div>";
                             }
@@ -49,8 +49,6 @@
                     </div>
                 </div> 
             </div>
-            
-
 
         </main>
 
