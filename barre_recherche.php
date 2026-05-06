@@ -8,18 +8,18 @@
 
 <nav class="header">
     <a class="active" href="page_recherche.php">Page d'accueil</a>
+    <a class="active" href="page_recherche.php">Créer une nouvelle randonnée</a>
     <h1> Wishorando 🏔️ </h1>
     <div class="search-container">
         <input type="text" id="searchInput" placeholder="Rechercher...">
         <button onclick="handleSearch()"><i class="fa fa-search"></i></button>
+        <div id = "result"></div>
     </div>
 </nav>
 
-<div class="content">
-    <p id="result"></p>
-</div>
-
 <script>
+    let timeout;
+
     function handleSearch() {
         const query = document.getElementById("searchInput").value.trim();
         const result = document.getElementById("result");
@@ -37,11 +37,19 @@
                 } else {
                     result.innerHTML = data.map(item => `<p>${item}</p>`).join("");
                 }
+                result.style.display = "block";
             });
     }
 
-    document.getElementById("searchInput").addEventListener("keydown", function(e) {
-        if (e.key === "Enter") handleSearch();
+    document.getElementById("searchInput").addEventListener("input", function() {
+        clearTimeout(timeout);
+        timeout = setTimeout(handleSearch, 300);
+    });
+
+    document.addEventListener("click", function(e) {
+        if (!document.querySelector(".search-container").contains(e.target)) {
+            document.getElementById("result").style.display = "none";
+        }
     });
 </script>
 
