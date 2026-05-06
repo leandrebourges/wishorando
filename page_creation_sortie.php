@@ -49,6 +49,9 @@
 
         <!-- Leaflet.js pour afficher la carte sur laquelle on clique pour faire le projet -->
         <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        
+        <!-- type = module pour pouvoir faire import -->
+        <script type="module" src="js/page_creation_sortie.js"></script>
     </body>
 </html>
 
