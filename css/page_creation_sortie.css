@@ -1,3 +1,9 @@
 h1 {
     
 }
+
+#map{
+    height: 50vh;
+    width: 80%;
+    margin: auto;
+}
