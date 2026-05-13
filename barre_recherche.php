@@ -7,19 +7,18 @@
 <body>
 
 <nav class="header">
-    <a class="active" href="page_recherche.php">Page d'accueil</a>
-    <h1> Wishorando 🏔️ </h1>
+    <a class="active" href="page_recherche.php" id="main"><i class="fa fa-home fa-fw" aria-hidden="true"></i> Wishorando</a>
+    <a class="active" href="page_creation_sortie.php"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i> Créer une nouvelle randonnée</a>
     <div class="search-container">
         <input type="text" id="searchInput" placeholder="Rechercher...">
         <button onclick="handleSearch()"><i class="fa fa-search"></i></button>
+        <div id = "result"></div>
     </div>
 </nav>
 
-<div class="content">
-    <p id="result"></p>
-</div>
-
 <script>
+    let timeout;
+
     function handleSearch() {
         const query = document.getElementById("searchInput").value.trim();
         const result = document.getElementById("result");
@@ -33,15 +32,23 @@
             .then(res => res.json())
             .then(data => {
                 if (data.length === 0) {
-                    result.textContent = "Aucun résultat trouvé.";
+                    result.textContent = "Aucun résultat.";
                 } else {
-                    result.innerHTML = data.map(item => `<p>${item}</p>`).join("");
+                    result.innerHTML = data.map(item => `<p><a href="detail_rando.php?id=${item.id}">${item.nom} (${item.distance} km)</a></p>`).join("");
                 }
+                result.style.display = "block";
             });
     }
 
-    document.getElementById("searchInput").addEventListener("keydown", function(e) {
-        if (e.key === "Enter") handleSearch();
+    document.getElementById("searchInput").addEventListener("input", function() {
+        clearTimeout(timeout);
+        timeout = setTimeout(handleSearch, 300);
+    });
+
+    document.addEventListener("click", function(e) {
+        if (!document.querySelector(".search-container").contains(e.target)) {
+            document.getElementById("result").style.display = "none";
+        }
     });
 </script>
 

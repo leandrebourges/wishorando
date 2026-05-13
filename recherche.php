@@ -12,17 +12,17 @@
     header("Content-Type: application/json");
 
     $nom = mysqli_real_escape_string($conn, $_GET["nom"]);
-    $sql = "SELECT nom FROM Sortie WHERE nom LIKE '%$nom%'";
+    $sql = "SELECT nom, distance, id FROM Sortie WHERE nom LIKE '%$nom%'";
     $result = mysqli_query($conn, $sql);
     $data = [];
 
     if (!$result) {
-    echo json_encode(["error" => mysqli_error($conn)]);
-    exit;
+        echo json_encode(["error" => mysqli_error($conn)]);
+        exit;
     }
 
     while ($row = mysqli_fetch_assoc($result)) {
-        $data[] = $row["nom"];
+        $data[] = $row;
     }
     echo json_encode($data);
 ?>
