@@ -12,7 +12,7 @@
     header("Content-Type: application/json");
 
     $nom = mysqli_real_escape_string($conn, $_GET["nom"]);
-    $sql = "SELECT nom, distance FROM Sortie WHERE nom LIKE '%$nom%'";
+    $sql = "SELECT nom, distance, id FROM Sortie WHERE nom LIKE '%$nom%'";
     $result = mysqli_query($conn, $sql);
     $data = [];
 

@@ -2,29 +2,22 @@ html {
     background: rgba(21, 128, 28, 0.219);
 }
 h2 {
-    margin-top: 50px;
+    text-align: center;
+    margin-top: 3%;
 }
 .container {
     display: flex;
     align-items: flex-start;
-    gap: 30px
+    /* gap: 30px */
 }
-.liste_randos {
-    width: 40%;
+.informations {
+    width: 45%;
+    margin-top: 3%;
     box-sizing: border-box;
     padding: 20px;
 }
-.rando {
-    background-color: rgba(21, 128, 28, 0.219);
-    border: 2px solid rgb(1, 75, 7);
-    border-radius: 6px;
-    padding: 20px;
-    margin: 10px;
-}
-.detail {
-    color: black;
-}
 .affichage {
+    /* margin-left: auto; */
     width: 55%;
     padding: 20px;
 }
