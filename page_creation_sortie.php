@@ -7,6 +7,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel = "stylesheet" href = "page_recherche.css" />
         <link rel="stylesheet" href="css/page_creation_sortie.css">
         <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
         <title>Ajouter une sortie</title>
@@ -14,6 +15,10 @@
 
 
     <body>
+
+        <header>
+            <?php include_once 'barre_recherche.php';?>
+        </header>
 
         <h1>Ajout d'une nouvelle sortie</h1>
 
