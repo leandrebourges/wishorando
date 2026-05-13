@@ -7,9 +7,8 @@
 <body>
 
 <nav class="header">
-    <a class="active" href="page_recherche.php">Page d'accueil</a>
-    <a class="active" href="page_recherche.php">Créer une nouvelle randonnée</a>
-    <h1> Wishorando 🏔️ </h1>
+    <a class="active" href="page_recherche.php" id="main"><i class="fa fa-home fa-fw" aria-hidden="true"></i> Wishorando</a>
+    <a class="active" href="page_recherche.php"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i> Créer une nouvelle randonnée</a>
     <div class="search-container">
         <input type="text" id="searchInput" placeholder="Rechercher...">
         <button onclick="handleSearch()"><i class="fa fa-search"></i></button>
@@ -33,9 +32,9 @@
             .then(res => res.json())
             .then(data => {
                 if (data.length === 0) {
-                    result.textContent = "Aucun résultat trouvé.";
+                    result.textContent = "Aucun résultat.";
                 } else {
-                    result.innerHTML = data.map(item => `<p>${item}</p>`).join("");
+                    result.innerHTML = data.map(item => `<p><a href="detail_rando.php?id=${item.id}">${item.nom} (${item.distance} km)</a></p>`).join("");
                 }
                 result.style.display = "block";
             });
