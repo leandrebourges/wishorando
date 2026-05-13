@@ -20,24 +20,54 @@
         <form action="php_requests/insert_sortie.php" method="POST">
 
             <label for="nom">Nom :</label>
-            <input type="text" id="nom" name="nom" maxlength="100" required><br><br>
+            <input type="text" id="nom" name="nom" maxlength="100" required>
+            
+            <br><br>
 
             <label for="description">Description :</label>
-            <textarea id="description" name="description"></textarea><br><br>
+            <textarea id="description" name="description"></textarea>
+            
+            <br><br>
 
             <label for="difficulte">Difficulté :</label>
             <select id="difficulte" name="difficulte">
-                <option value="">--Choisir une difficulté--</option>
                 <option value="facile">Facile</option>
                 <option value="moyen">Moyen</option>
                 <option value="difficile">Difficile</option>
-            </select><br><br>
+            </select>
+            
+            <br><br>
 
-            <label for="chien_autorise">Chien autorisé ? :</label>
-            <input type="checkbox" id="chien_autorise" name="chien_autorise" value="1"><br><br>
+            <label for="etat_chien">Presence de chien ? :</label>
+            <select id="etat_chien" name="etat_chien">
+                <option value="autorise">Autorisé</option>
+                <option value="laisse">En laisse</option>
+                <option value="interdit">Interdit</option>
+            </select>
+            
+            <br><br>
 
             <!-- input caché qui va contenir les coords des différents points du parcours -->
             <input type="hidden" id="parcours_points_coords" name="parcours_points_coords">
+
+            <div id="coords_sortie_sans_trajet">
+                <label for="latitude">Latitude :</label>
+                <input type="number" step="0.01" id="latitude" name="latitude">
+
+                <br><br>
+
+                <label for="longitude">Longitude :</label>
+                <input type="number" step="0.01" id="longitude" name="longitude">
+            </div>
+
+            <br><br>
+
+            <label>
+                Sortie avec un trajet
+            </label>
+            <input type="checkbox" id="checkbox_sortie_avec_trajet" name="sortie_avec_trajet">
+
+            <br><br>
 
             <button type="submit">Envoyer</button>
 

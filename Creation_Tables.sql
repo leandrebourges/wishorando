@@ -14,15 +14,15 @@ CREATE TABLE Realisation (
 -- Table Sortie
 CREATE TABLE Sortie (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    nom VARCHAR(100) NOT NULL,
+    nom VARCHAR(100) NOT NULL, -- titre
     depart_longitude FLOAT NOT NULL,
-    depart_latitude FLOAT NOT NULL,
-    description TEXT,
-    parcours VARCHAR(50),   -- Nom du fichier de parcours
+    depart_latitude FLOAT NOT NULL, 
+    description TEXT, -- nom_fichier_parcours
+    parcours VARCHAR(50),   -- liste_points [[latitude, longitude], [] ...]
     distance FLOAT NOT NULL,
     denivele INT NOT NULL,
-    difficulte VARCHAR(50),
-    chien_autorise BOOLEAN
+    difficulte ENUM('facile', 'moyen', 'difficile') NOT NULL,
+    etat_chien ENUM('interdit', 'laisse', 'autorise') NOT NULL,
 );
 
 -- Table Type
