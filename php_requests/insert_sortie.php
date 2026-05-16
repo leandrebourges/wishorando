@@ -137,7 +137,7 @@ try {
         $dom->loadXML($xml->asXML());
 
         // création fichier
-        $dom->save(__DIR__ . "/../gpx_parcours/" . $gpx_filename);
+        $dom->save(__DIR__ . "/../gpx_files/" . $gpx_filename);
     }
 
 } catch (Exception $e) {

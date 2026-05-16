@@ -2,7 +2,7 @@
 
 <?php
     include_once 'connexion_bdd.php';
-    $sql_rando = "SELECT id, nom, distance FROM sortie";
+    $sql_rando = "SELECT id, nom, distance, depart_latitude, depart_longitude FROM sortie";
     $result_rando = $conn->query($sql_rando);
 ?>
 
@@ -32,10 +32,17 @@
                     <div class = "sortie">
                         <?php
                             while ($rando = $result_rando->fetch_assoc()){
-                                echo "<div class = 'rando'>Nom : {$rando['nom']}<br>
-                                        Distance : {$rando['distance']} km<br>
-                                        <a class = 'detail' href = 'detail_rando.php?id={$rando['id']}'>Plus de détails</a>
-                                      </div>";
+                                echo 
+                                "<div class = 'rando'>Nom : {$rando['nom']}<br>";
+                                    if($rando['distance'] != 0){
+                                        echo "Distance : {$rando['distance']} km<br>";
+                                    }
+                                    else{
+                                        echo "Aucun déplacement<br>";
+                                    }
+                                    
+                                    echo "<a class = 'detail' href = 'detail_rando.php?id={$rando['id']}'>Plus de détails</a>
+                                </div>";
                             }
                         ?>
 
@@ -59,32 +66,25 @@
 
         <!-- NE PAS TOUCHER !! Affichage de la carte ! (sauf Léandre) -->
         <script>
+            const infos_markers = [
+                <?php
+                    foreach($result_rando as $rando){
+                        echo "[{$rando['depart_latitude']}, {$rando['depart_longitude']},'{$rando['nom']}'],";
+                    }
+                ?>];
 
-            const map = L.map('map').setView([45.905, 6.13], 12);
-
-            const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 19,
+            var map = L.map('map').setView([45.905, 6.13], 14);
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             }).addTo(map);
 
-            var marker = L.marker([45.905, 6.13]).addTo(map);
-
-            var popup = L.popup()
-            .setLatLng([45.915, 6.13])
-            .setContent("I am a standalone popup.")
-            .openOn(map);
-
-            var popup = L.popup();
-
-            function onMapClick(e) {
-                popup
-                    .setLatLng(e.latlng)
-                    .setContent("You clicked the map at " + e.latlng.toString())
-                    .openOn(map);
-            }
-
-            map.on('click', onMapClick);
-
+            infos_markers.forEach(infos => {
+                var marker = L.marker([infos[0], infos[1]]).addTo(map);
+                // autoclose pour qu'il reste ouvert 
+                // et autoPan pour éviter que la carte aille là ou est dernier point (et reste donc sur Annecy)
+                marker.bindPopup(infos[2], {autoClose:false, autoPan: false});
+                marker.openPopup();
+            });
         </script>
 
     </body>
