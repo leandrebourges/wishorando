@@ -1,4 +1,6 @@
 <?php
+include_once 'connexion_bdd.php'; // recup connexion dans $conn
+
 
 
 ?>
@@ -43,6 +45,10 @@
             
             <br><br>
 
+            <!-- select type -->
+
+            <!-- date -->
+
             <label for="etat_chien">Presence de chien ? :</label>
             <select id="etat_chien" name="etat_chien">
                 <option value="autorise">Autorisé</option>
@@ -82,7 +88,7 @@
             
         </div>
 
-        <!-- Leaflet.js pour afficher la carte sur laquelle on clique pour faire le projet -->
+        <!-- Leaflet.js pour afficher la carte sur laquelle on clique pour faire le trajet -->
         <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
         
         <!-- type = module pour pouvoir faire import -->

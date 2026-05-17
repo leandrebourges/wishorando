@@ -5,12 +5,11 @@
 
     //if (mysqli_connect_errno()) {
     if (!$conn) { 
-    echo "<p class = \"erreur\"> Erreur: " . mysqli_connect_error(). "</p>";
+        echo "<p class = \"erreur\"> Erreur: " . mysqli_connect_error(). "</p>";
     } else {  
-    // Sélection de la base de données
-    mysqli_select_db($conn, "wishorando");                                 
-    // Encodage UTF8 pour les échanges avecla BD
-    mysqli_query($conn, "SET NAMES UTF8");  
-    // echo "Base de données connectée !";
+        // Sélection de la base de données
+        mysqli_select_db($conn, "wishorando");                                 
+        // Encodage UTF8 pour les échanges avecla BD
+        mysqli_query($conn, "SET NAMES UTF8"); 
     }
 ?>
