@@ -1,9 +1,46 @@
 h1 {
-    
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
 }
 
-#map{
-    height: 80vh;
-    width: 80%;
-    margin: auto;
+.contenu_page {
+    display: flex;
+    gap: 10vw;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+form{
+    padding: 20px;
+}
+
+label{
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.map-container {
+    width: 40%;
+}
+
+#map {
+    height: 60vh;
+    width: 100%;
+}
+
+button{
+    background-color: rgba(21, 128, 28, 0.219); 
+    color: black;
+    padding: 15px;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: rgba(21, 128, 28, 0.35);
+    cursor: pointer;
+}
+
+#bouton_import{
+    margin-left: 5vw;
 }

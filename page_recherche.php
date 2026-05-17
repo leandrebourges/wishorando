@@ -21,7 +21,7 @@
     <body>
 
         <header>
-            <?php include_once 'barre_recherche.php';?>
+            <?php include_once 'navbar.php';?>
         </header>
 
         <main>
@@ -41,7 +41,7 @@
                                         echo "Aucun déplacement<br>";
                                     }
                                     
-                                    echo "<a class = 'detail' href = 'detail_rando.php?id={$rando['id']}'>Plus de détails</a>
+                                    echo "<a class = 'detail' href = 'detail_sortie.php?id={$rando['id']}'>Plus de détails</a>
                                 </div>";
                             }
                         ?>

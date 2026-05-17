@@ -2,13 +2,13 @@
 <html>
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/barre_recherche.css">
+    <link rel="stylesheet" href="css/navbar.css">
 </head>
 <body>
 
 <nav class="header">
-    <a class="active" href="page_recherche.php" id="main"><i class="fa fa-home fa-fw" aria-hidden="true"></i> Wishorando</a>
-    <a class="active" href="page_creation_sortie.php"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i> Créer une nouvelle randonnée</a>
+    <a href="page_recherche.php" id="main"><i class="fa fa-home fa-fw" aria-hidden="true"></i> Wishorando</a>
+    <a href="page_creation_sortie.php"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i> Créer une nouvelle randonnée</a>
     <div class="search-container">
         <input type="text" id="searchInput" placeholder="Rechercher...">
         <button onclick="handleSearch()"><i class="fa fa-search"></i></button>

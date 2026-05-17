@@ -9,10 +9,14 @@ body {
 }
 
 .header a {
-    color: #000000;
     text-decoration: none;
     padding: 18px;
     font-size: 15px;
+    background-color: rgba(21, 128, 28, 0.219); 
+    color: #ffffff;
+    /* mettre un bordure transparente pour que on ait pas l'impression 
+    de changement de taille au hover */
+    border: 1px solid transparent; 
 }
 
 .header a#main {
@@ -23,8 +27,8 @@ body {
 }
 
 
-.header > a:hover { background-color: #ddd; border: 1px solid #004f05;}
-.header a.active { background-color: rgba(21, 128, 28, 0.219); color: #ffffff; }
+.header > a:hover { border: 1px solid #004f05;}
+/* .header a.active { background-color: rgba(21, 128, 28, 0.219); color: #ffffff; } */
 
 .search-container {
     margin-left: auto;

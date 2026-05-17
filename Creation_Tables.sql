@@ -17,7 +17,7 @@ CREATE TABLE Sortie (
     nom VARCHAR(100) NOT NULL, -- titre
     depart_longitude FLOAT NOT NULL,
     depart_latitude FLOAT NOT NULL, 
-    description TEXT, -- nom_fichier_parcours
+    description TEXT,
     parcours VARCHAR(100),   -- liste_points [[latitude, longitude], [] ...]
     distance FLOAT NOT NULL,
     denivele INT NOT NULL,
