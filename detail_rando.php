@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <?php
-    include_once 'connexion_bdd.php';
+    include_once 'php_requests/connexion_bdd.php';
     $id = $_GET['id'];
     $sql_rando = "SELECT * FROM sortie WHERE id = $id";
     $result_rando = $conn->query($sql_rando);
@@ -22,7 +22,7 @@
     <head>
         <title> Page Randonnée </title>
         <meta charset = "UTF-8">
-        <link rel = "stylesheet" href = "detail_rando.css"/>
+        <link rel = "stylesheet" href = "css/detail_rando.css"/>
         <link rel = "stylesheet" href = "https://unpkg.com/leaflet/dist/leaflet.css" />
         <script src = "https://unpkg.com/leaflet/dist/leaflet.js"></script>
         <script src = "https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.5.1/gpx.min.js"></script>

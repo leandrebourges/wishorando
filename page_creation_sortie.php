@@ -1,15 +1,16 @@
 <?php
-include_once 'connexion_bdd.php'; // recup connexion dans $conn
+    include_once 'php_requests/connexion_bdd.php'; // recup connexion dans $conn
 
-
+    $sql_types = "SELECT * FROM type";
+    $result_types = $conn->query($sql_types);
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel = "stylesheet" href = "page_recherche.css" />
+        <link rel = "stylesheet" href = "css/page_recherche.css" />
         <link rel="stylesheet" href="css/page_creation_sortie.css">
         <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
         <title>Ajouter une sortie</title>
@@ -45,10 +46,6 @@ include_once 'connexion_bdd.php'; // recup connexion dans $conn
             
             <br><br>
 
-            <!-- select type -->
-
-            <!-- date -->
-
             <label for="etat_chien">Presence de chien ? :</label>
             <select id="etat_chien" name="etat_chien">
                 <option value="autorise">Autorisé</option>
@@ -58,17 +55,43 @@ include_once 'connexion_bdd.php'; // recup connexion dans $conn
             
             <br><br>
 
+            <label for="type">Type de sortie :</label>
+            <select id="type" name="type">
+                <?php 
+                    while ($type = $result_types->fetch_assoc()){
+                        echo "<option value={$type['id']}>{$type['nom']}</option>";
+                    }
+                ?>
+            </select>
+
+            <br><br>
+
+            <label for="saison">Saison :</label>
+            <select id="saison" name="saison">
+                <option value="été">Été</option>
+                <option value="hiver">Hiver</option>
+                <option value="printemps">Printemps</option>
+                <option value="automne">Automne</option>
+            </select>
+
+            <br><br>
+
+            <label for="date_sortie">Date et heure :</label>
+            <input type="datetime-local" id="date_sortie" name="date_sortie" required>
+
+            <br><br>
+
             <!-- input caché qui va contenir les coords des différents points du parcours -->
             <input type="hidden" id="parcours_points_coords" name="parcours_points_coords">
 
             <div id="coords_sortie_sans_trajet">
                 <label for="latitude">Latitude :</label>
-                <input type="number" step="0.01" id="latitude" name="latitude">
+                <input type="number" step="0.01" id="latitude" name="latitude" required>
 
                 <br><br>
 
                 <label for="longitude">Longitude :</label>
-                <input type="number" step="0.01" id="longitude" name="longitude">
+                <input type="number" step="0.01" id="longitude" name="longitude" required>
             </div>
 
             <br><br>

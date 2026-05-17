@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS Realisation;
 -- Table Realisation
 CREATE TABLE Realisation (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    date DATE NOT NULL
+    date DATETIME NOT NULL
 );
 
 -- Table Sortie
@@ -18,7 +18,7 @@ CREATE TABLE Sortie (
     depart_longitude FLOAT NOT NULL,
     depart_latitude FLOAT NOT NULL, 
     description TEXT, -- nom_fichier_parcours
-    parcours VARCHAR(50),   -- liste_points [[latitude, longitude], [] ...]
+    parcours VARCHAR(100),   -- liste_points [[latitude, longitude], [] ...]
     distance FLOAT NOT NULL,
     denivele INT NOT NULL,
     difficulte ENUM('facile', 'moyen', 'difficile') NOT NULL,
@@ -50,7 +50,7 @@ CREATE TABLE date_sortie (
 CREATE TABLE affectation (
     id_sortie INT,
     id_type INT,
-    saison VARCHAR(50),
+    saison ENUM('été', 'hiver', 'printemps', 'automne') NOT NULL,
 
     PRIMARY KEY (id_sortie, id_type, saison),
 

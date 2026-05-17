@@ -27,13 +27,9 @@ async function createMapPoint(e){
     let altitude = await getElevation(latitude, longitude);
 
     if(altitude === null){
-        console.log("dazdaz")
         alert("Problème lors de l'ajout du point, veuillez réessayer");
         return;
     }
-
-    console.log(altitude)
-    console.log(document.getElementById('parcours_points_coords').value)
 
     // ajoute point à la liste de points
     points.push([latitude, longitude, altitude]);
@@ -127,6 +123,7 @@ form.addEventListener("submit", async (e) => {
             method: "POST",
             body: formData
         });
+        console.log(response);
 
         if (!response.ok) {
             const data = await response.json();

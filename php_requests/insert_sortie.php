@@ -37,6 +37,12 @@ try {
     $difficulte = $_POST['difficulte'];
     // interdit, laisse, autorise
     $etat_chien = $_POST['etat_chien'];
+    // été, hiver, printemps, automne
+    $saison = $_POST['saison'];
+    // id du type
+    $type_id = $_POST['type'];
+    // datetime
+    $date = $_POST['date_sortie'];
 
 
 
@@ -94,7 +100,7 @@ try {
     $preparation = mysqli_prepare($conn, $sql);
     mysqli_stmt_bind_param(
         $preparation,
-        "sddssddss" // s pour string et d pour decimal/float
+        "sddssddss", // s pour string et d pour decimal/float
         $nom,
         $depart_longitude,
         $depart_latitude,
@@ -108,6 +114,58 @@ try {
 
     // exécution requête
     mysqli_stmt_execute($preparation);
+    // récupération de l'id généré
+    $id_nouvelle_sortie = mysqli_insert_id($conn);
+
+
+
+    // création des liens pour la date / saison / type
+    
+    // realisation
+    $sql = "INSERT INTO realisation (date)
+            VALUES (?)";
+    $preparation = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param(
+        $preparation,
+        "s", // s pour string (date considéré comme string)
+        $date,
+    );
+    // exécution requête
+    mysqli_stmt_execute($preparation);
+    // récupération de l'id généré
+    $id_nouvelle_realisation = mysqli_insert_id($conn);
+
+
+
+    // type et saison
+    $sql = "INSERT INTO affectation (id_sortie, id_type, saison)
+            VALUES (?, ?, ?)";
+    $preparation = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param(
+        $preparation,
+        "iis", // s pour string et i pour int
+        $id_nouvelle_sortie,
+        $type_id,
+        $saison
+    );
+    // exécution requête
+    mysqli_stmt_execute($preparation);
+
+
+    // lien date et sortie
+    $sql = "INSERT INTO date_sortie (id_realisation, id_sortie)
+            VALUES (?, ?)";
+    $preparation = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param(
+        $preparation,
+        "ii", // s pour string et i pour int
+        $id_nouvelle_realisation,
+        $id_nouvelle_sortie,
+    );
+    // exécution requête
+    mysqli_stmt_execute($preparation);
+
+
 
     // creation du fichier gpx (qui est de l'XML) si il y a un parcours
     if($parcours_points_coords != null){
@@ -149,7 +207,7 @@ try {
 }
 
 echo json_encode([
-    "message" => "Erreur lors de la création de la sortie : "
+    "message" => "Création réussie "
 ]);
 exit;
 ?>

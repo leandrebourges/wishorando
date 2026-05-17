@@ -2,7 +2,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="barre_recherche.css">
+    <link rel="stylesheet" href="css/barre_recherche.css">
 </head>
 <body>
 
@@ -28,7 +28,7 @@
             return;
         }
 
-        fetch("recherche.php?nom=" + encodeURIComponent(query))
+        fetch("php_requests/recherche.php?nom=" + encodeURIComponent(query))
             .then(res => res.json())
             .then(data => {
                 if (data.length === 0) {
