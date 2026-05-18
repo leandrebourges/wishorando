@@ -1,3 +1,56 @@
+html {
+    background: rgba(21, 128, 28, 0.219);
+}
 h1 {
-    
+    text-align: center;
+}
+
+form {
+    gap: 15px;
+    margin-left: 20px;
+    font-size: 17px;
+}
+
+form input {
+    padding: 3px;
+    font-size: 17px;
+    border-radius: 8px;
+    border: black solid 1px;
+}
+
+form input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    vertical-align: top;
+    border-radius: 8px;
+    border: black solid 1px;
+}
+
+form textarea {
+    width: 250px;
+    height: 50px;
+    vertical-align: top;
+    padding: 3px;
+    font-size: 17px;
+    border-radius: 8px;
+    border: black solid 1px;
+}
+
+form select {
+    padding: 3px;
+    font-size: 17px;
+    border-radius: 8px;
+    border: black solid 1px;
+}
+
+form button/*[type="submit"] à ajouter si d'autres boutons sont rajoutés dans la page et que l'on veut cibler uniquement celui-ci*/ { 
+    margin-left : 300px;
+    padding: 8px 10px;
+}
+
+#map{
+    height: 80vh;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 50px;
 }

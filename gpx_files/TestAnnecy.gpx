@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="Wishorando">
+  <trk>
+    <trkseg>
+      <trkpt lat="45.906152261766" lon="6.1104180301821">
+        <ele>451</ele>
+      </trkpt>
+      <trkpt lat="45.905614590121" lon="6.1334176351285">
+        <ele>452</ele>
+      </trkpt>
+      <trkpt lat="45.894262528836" lon="6.1210596384409">
+        <ele>449</ele>
+      </trkpt>
+      <trkpt lat="45.895099075719" lon="6.0983174917588">
+        <ele>514</ele>
+      </trkpt>
+      <trkpt lat="45.907705506152" lon="6.0894780913503">
+        <ele>425</ele>
+      </trkpt>
+      <trkpt lat="45.917322705487" lon="6.1055263231599">
+        <ele>426</ele>
+      </trkpt>
+      <trkpt lat="45.91791999209" lon="6.1461189095019">
+        <ele>492</ele>
+      </trkpt>
+      <trkpt lat="45.905973038463" lon="6.1694617921341">
+        <ele>824</ele>
+      </trkpt>
+      <trkpt lat="45.89408326715" lon="6.1756407904779">
+        <ele>624</ele>
+      </trkpt>
+    </trkseg>
+  </trk>
+</gpx>

@@ -8,7 +8,7 @@
 
 <nav class="header">
     <a class="active" href="page_recherche.php" id="main"><i class="fa fa-home fa-fw" aria-hidden="true"></i> Wishorando</a>
-    <a class="active" href="page_recherche.php"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i> Créer une nouvelle randonnée</a>
+    <a class="active" href="page_creation_sortie.php"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i> Créer une nouvelle randonnée</a>
     <div class="search-container">
         <input type="text" id="searchInput" placeholder="Rechercher...">
         <button onclick="handleSearch()"><i class="fa fa-search"></i></button>

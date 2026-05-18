@@ -1,63 +1,98 @@
 <?php
+include_once 'connexion_bdd.php'; // recup connexion dans $conn
+
 
 
 ?>
-    <!DOCTYPE html>
-    <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link rel="stylesheet" href="css/page_creation_sortie.css">
-            <title>Ajouter une sortie</title>
-
-            <!-- Leaflet.js pour afficher la carte sur laquelle on clique pour faire le projet -->
-            <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-            <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-        </head>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel = "stylesheet" href = "page_recherche.css" />
+        <link rel="stylesheet" href="css/page_creation_sortie.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+        <title>Ajouter une sortie</title>
+    </head>
 
 
-        <body>
+    <body>
 
-            <h1>Ajout d'une nouvelle sortie</h1>
+        <header>
+            <?php include_once 'barre_recherche.php';?>
+        </header>
 
-            <form action="php_requests/insert_sortie.php" method="POST">
+        <h1>Ajout d'une nouvelle sortie</h1>
 
-                <label for="nom">Nom :</label>
-                <input type="text" id="nom" name="nom" maxlength="100" required><br><br>
+        <form action="php_requests/insert_sortie.php" method="POST">
 
-                <label for="description">Description :</label>
-                <textarea id="description" name="description"></textarea><br><br>
+            <label for="nom">Nom :</label>
+            <input type="text" id="nom" name="nom" maxlength="100" required>
+            
+            <br><br>
 
-                <label for="distance">Distance (km) :</label>
-                <input type="number" step="any" id="distance" name="distance" required><br><br>
+            <label for="description">Description :</label>
+            <textarea id="description" name="description"></textarea>
+            
+            <br><br>
 
-                <label for="denivele">Dénivelé (m) :</label>
-                <input type="number" id="denivele" name="denivele" required><br><br>
+            <label for="difficulte">Difficulté :</label>
+            <select id="difficulte" name="difficulte">
+                <option value="facile">Facile</option>
+                <option value="moyen">Moyen</option>
+                <option value="difficile">Difficile</option>
+            </select>
+            
+            <br><br>
 
-                <label for="difficulte">Difficulté :</label>
-                <select id="difficulte" name="difficulte">
-                    <option value="">--Choisir une difficulté--</option>
-                    <option value="facile">Facile</option>
-                    <option value="moyen">Moyen</option>
-                    <option value="difficile">Difficile</option>
-                </select><br><br>
+            <!-- select type -->
 
-                <label for="chien_autorise">Chien autorisé ? :</label>
-                <input type="checkbox" id="chien_autorise" name="chien_autorise" value="1"><br><br>
+            <!-- date -->
 
-                <!-- input caché qui va contenir les coords des différents points du parcours -->
-                <input type="hidden" id="parcours_points_coords" name="parcours_points_coords">
+            <label for="etat_chien">Presence de chien ? :</label>
+            <select id="etat_chien" name="etat_chien">
+                <option value="autorise">Autorisé</option>
+                <option value="laisse">En laisse</option>
+                <option value="interdit">Interdit</option>
+            </select>
+            
+            <br><br>
 
-                <button type="submit">Envoyer</button>
+            <!-- input caché qui va contenir les coords des différents points du parcours -->
+            <input type="hidden" id="parcours_points_coords" name="parcours_points_coords">
 
-            </form>
+            <div id="coords_sortie_sans_trajet">
+                <label for="latitude">Latitude :</label>
+                <input type="number" step="0.01" id="latitude" name="latitude">
 
-            <div id="map">
+                <br><br>
 
+                <label for="longitude">Longitude :</label>
+                <input type="number" step="0.01" id="longitude" name="longitude">
             </div>
 
-        </body>
+            <br><br>
 
+            <label>
+                Sortie avec un trajet
+            </label>
+            <input type="checkbox" id="checkbox_sortie_avec_trajet" name="sortie_avec_trajet">
 
-    </html>
+            <br><br>
+
+            <button type="submit">Envoyer</button>
+
+        </form>
+
+        <div id="map">
+            
+        </div>
+
+        <!-- Leaflet.js pour afficher la carte sur laquelle on clique pour faire le trajet -->
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        
+        <!-- type = module pour pouvoir faire import -->
+        <script type="module" src="js/page_creation_sortie.js"></script>
+    </body>
+</html>
 
