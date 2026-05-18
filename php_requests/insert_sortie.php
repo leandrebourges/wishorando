@@ -1,9 +1,5 @@
 <?php
-// paramètres de connexion (include fichier plus tard)
-$host = "localhost";
-$dbname = "wishorando";     
-$username = "root";
-$password = "";
+include_once 'connexion_bdd.php'; // recup connexion dans $conn
 
 function calculDistance($point1, $point2) {
     // rayon Terre (km)
@@ -28,9 +24,6 @@ function calculDistance($point1, $point2) {
 }
 
 try {
-    // connexion PDO
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // récupération des données du formulaire
     $nom = $_POST['nom'];
@@ -95,23 +88,26 @@ try {
 
     // requête SQL d'insertion
     $sql = "INSERT INTO sortie (nom, depart_longitude, depart_latitude, description, parcours, distance, denivele, difficulte, etat_chien)
-            VALUES (:nom, :depart_longitude, :depart_latitude, :description, :parcours, :distance, :denivele, :difficulte, :etat_chien)";
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     // préparation pour empêcher les SQL Injection
-    $stmt = $pdo->prepare($sql);
+    $preparation = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param(
+        $preparation,
+        "sddssddss" // s pour string et d pour decimal/float
+        $nom,
+        $depart_longitude,
+        $depart_latitude,
+        $description,
+        $gpx_filename,
+        $distance,
+        $denivele,
+        $difficulte,
+        $etat_chien
+    );
 
     // exécution requête
-    $stmt->execute([
-        ':nom' => $nom,
-        ':depart_longitude' => $depart_longitude,
-        ':depart_latitude' => $depart_latitude,
-        ':description' => $description,
-        ':parcours' => $gpx_filename,
-        ':distance' => $distance,
-        ':denivele' => $denivele,
-        ':difficulte' => $difficulte,
-        ':etat_chien' => $etat_chien
-    ]);
+    mysqli_stmt_execute($preparation);
 
     // creation du fichier gpx (qui est de l'XML) si il y a un parcours
     if($parcours_points_coords != null){
@@ -137,7 +133,7 @@ try {
         $dom->loadXML($xml->asXML());
 
         // création fichier
-        $dom->save(__DIR__ . "/../gpx_parcours/" . $gpx_filename);
+        $dom->save(__DIR__ . "/../gpx_files/" . $gpx_filename);
     }
 
 } catch (Exception $e) {
